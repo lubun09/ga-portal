@@ -57,7 +57,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $data["alamat"];
     $nestedData[] = $data["no_hp_kurir"];
     $nestedData[] = '<td style="text-align:center;">
-          		<a href=orderankurir.php?id_kurir='.$data['id_kurir'].'>Lihat Orderan</a></td>
+          		<a href=orderankurir.php?id_kurir='.$data['id_kurir'].'>Lihat Data</a></td>
           		<td style="text-align:center;">
           		<a href=detail-kurir.php?id_kurir='.$data['id_kurir'].'>Detail &nbsp|</a>
           		<a href=editkurir.php?id_kurir='.$data['id_kurir'].'>|&nbsp Ubah</a></td>;		

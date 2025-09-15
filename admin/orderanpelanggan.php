@@ -6,7 +6,7 @@ include "login/ceksession.php";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>e-kurir</title>
+  <title>GA-Messenger</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -49,11 +49,11 @@ include "login/ceksession.php";
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Data Orderan Pelanggan 
+            Data Pengiriman Karyawan 
           </h1>
           <ol class="breadcrumb">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Pelanggan</li>
+            <li class="active">Karyawan</li>
           </ol>
         </section>
 
@@ -75,7 +75,7 @@ include "login/ceksession.php";
                   $query  	= mysqli_query($db, $sql);
                   $data		= mysqli_fetch_array($query);
                   ?>
-                  <h3 class="box-title">Data Orderan Pelanggan <?php echo $data['nama_pelanggan'];?></h3>
+                  <h3 class="box-title">Data Pengiriman Karyawan <?php echo $data['nama_pelanggan'];?></h3>
                   <div class="box-tools pull-right">
                   </div> 
                 </div><!-- /.box-header -->
@@ -93,14 +93,14 @@ include "login/ceksession.php";
             $query1  	= mysqli_query($db, $sql1);
             $total		= mysqli_num_rows($query1);
             if ($total == 0) {
-              echo"<center><h2>Belum Ada Order dari ".$data['nama_pelanggan']."</h2></center>";
+              echo"<center><h2>Belum Ada Pengiriman dari ".$data['nama_pelanggan']."</h2></center>";
             }
             else{?>
             <table id="lookup" class="table table-bordered table-hover">  
              <thead bgcolor="eeeeee" align="center">
               <tr>
-               <th>No Order</th>
-               <th>Nama Barang</th>
+               <th>ID Pemesanan</th>
+               <th>Jenis Barang</th>
                <th>Alamat Asal</th>
                <th>Alamat Tujuan</th>	   
                <th>Pengirim</th>

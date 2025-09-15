@@ -1,6 +1,6 @@
-<footer class="main-footer">
-	<div class="pull-right hidden-xs">
-		<b> Aplikasi e-Kurir </b> 
-	</div>
-	<strong>Copyright &copy; 2025 <a href="">KPN</a></strong> | 
+<footer class="main-footer" style="margin-top: auto;">
+  <div class="pull-right hidden-xs">
+    GA-Messenger
+  </div>
+  <strong>&copy; <?php echo date('Y'); ?> <a href="#">KPN</a></strong>
 </footer>

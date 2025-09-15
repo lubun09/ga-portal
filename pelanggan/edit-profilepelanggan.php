@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-Kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -45,11 +45,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Edit Pelanggan
+            Edit Karyawan
           </h1>
           <ol class="breadcrumb">
-            <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Pelanggan</li>
+            <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+            <li class="active">Karyawan</li>
           </ol>
         </section>
 
@@ -64,7 +64,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Edit Profile Pelanggan</h3>
+                  <h3 class="box-title">Edit Profile Karyawan</h3>
                   <div class="box-tools pull-right">
                   </div> 
                 </div><!-- /.box-header -->
@@ -78,11 +78,11 @@
                     <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Nama</label>
                       <div class="col-sm-4">
-                        <input name="nama_pelanggan" type="text" id="nama_pelanggan" class="form-control" placeholder="Nama Pelanggan" value="<?php echo $data['nama_pelanggan'];?>" autocomplete="off" required />
+                        <input name="nama_pelanggan" type="text" id="nama_pelanggan" class="form-control" placeholder="Nama Karyawan" value="<?php echo $data['nama_pelanggan'];?>" autocomplete="off" required />
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Username Pelanggan</label>
+                      <label class="col-sm-2 col-sm-2 control-label">Username Karyawan</label>
                       <div class="col-sm-4">
                         <input name="username_pelanggan" type="text" id="username_pelanggan" class="form-control" placeholder="Username pelanggan" value="<?php echo $data['username_pelanggan'];?>" autocomplete="off" required />   
                       </div>

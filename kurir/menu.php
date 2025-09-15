@@ -1,41 +1,53 @@
 <?php 
-	 include '../koneksi/koneksi.php';
-			$sql  		= "SELECT * FROM tb_kurir where id_kurir='".$_SESSION['id']."'";                        
-			$query  	= mysqli_query($db, $sql);
-			$data 		= mysqli_fetch_array($query);
+  include '../koneksi/koneksi.php';
+  $sql    = "SELECT * FROM tb_kurir WHERE id_kurir='".$_SESSION['id']."'";
+  $query  = mysqli_query($db, $sql);
+  $data   = mysqli_fetch_array($query);
 ?>
-<aside class="main-sidebar">
-  <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
-    <!-- Sidebar user panel -->
-    <div class="user-panel">
-      <div class="pull-left image">
-        <img src="images/<?php echo $data['gambar'];?>" height="200" width="200" style="border: 2px solid white;" class="img-circle" alt="User Image">
-      </div>
-      <div class="pull-left info">
-        <p><?php echo $_SESSION['nama']; ?></p>
-        <a href="index.php"><i class="fa fa-circle text-success"></i> Online</a>
-      </div>
-    </div><br />
-    <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu">
-      <li class="header">MENU UTAMA</li>
-      <li class="active treeview">
-        <a href="index.php">
+<aside class="main-sidebar" style="background: color: #fff;">
+  <section class="sidebar" style="padding-top: 20px;">
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" style="padding-left: 10px; padding-right: 10px;">
+      <li class="header" style="color: #bbb; text-align: center; letter-spacing: 1px;">MENU UTAMA</li>
+
+      <li class="active">
+        <a href="index.php" style="border-radius: 8px; margin: 4px 0; background: #8B0000; color: #fff;">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
 
-      <li>
-        <a href="#">
+      <li class="treeview">
+        <a href="#" style="border-radius: 8px; margin: 4px 0; color: #fff;">
           <i class="fa fa-user"></i> <span>Informasi</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
-        <ul class="treeview-menu">
-          <!-- <li><a href="dataorder.php"><i class="fa fa-circle-o"></i>Daftar Order</a></li> -->
-          <li><a href="ambilorder.php?no_transaksi="><i class="fa fa-circle-o"></i>Lacak</a></li>
-          <li><a href="orderterkirim.php"><i class="fa fa-circle-o"></i>Terkirim</a></li>
+        <ul class="treeview-menu" style="padding-left: 15px;">
+          <li>
+            <a href="ambilorder.php?no_transaksi=" style="border-radius: 6px; margin: 3px 0; color: #ccc;">
+              <i class="fa fa-circle-o"></i> Ambil
+            </a>
+          </li>
+          <li>
+            <a href="orderterkirim.php" style="border-radius: 6px; margin: 3px 0; color: #ccc;">
+              <i class="fa fa-circle-o"></i> Selesai
+            </a>
+          </li>
         </ul>
       </li>
+    </ul>
   </section>
-          <!-- /.sidebar -->
 </aside>
+
+<!-- Sidebar Hover Effect -->
+<style>
+  .sidebar-menu li > a:hover {
+    background: #8B0000 !important;
+    color: #fff !important;
+    cursor: pointer;
+  }
+  .treeview-menu li > a:hover {
+    background: rgba(139, 0, 0, 0.2) !important;
+    color: #fff !important;
+    cursor: pointer;
+  }
+</style>

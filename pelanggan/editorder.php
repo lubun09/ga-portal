@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-Kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -77,9 +77,9 @@
                   <form class="form-horizontal style-form" action="proses/proses_edit_order.php?no_transaksi=<?php echo $no_transaksi?>" method="post" enctype="multipart/form-data" name="form1" id="form1">
                     
                     <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Nama Barang</label>
+                      <label class="col-sm-2 col-sm-2 control-label">Jenis Barang</label>
                       <div class="col-sm-4">
-                        <input name="nama_barang" value="<?php echo $data['nama_barang'];?>" type="text" id="nama_barang" class="form-control" placeholder="Nama Barang" autocomplete="off" required />
+                        <input name="nama_barang" value="<?php echo $data['nama_barang'];?>" type="text" id="nama_barang" class="form-control" placeholder="Jenis Barang" autocomplete="off" required />
                       </div>
                     </div>
                     <div class="form-group">
@@ -106,6 +106,23 @@
                         <input type="text" value="<?php echo $data['no_hp_penerima'];?>" name="no_hp_penerima" id="no_hp_penerima" class="form-control" placeholder="Masukkan No HP Penerima" autocomplete="off" maxlength="12" onKeyPress="return goodchars(event,'0123456789',this)" required />
                       </div>
                     </div>
+                    
+<div class="form-group">
+  <label class="col-sm-2 col-sm-2 control-label">Foto Barang</label>
+  <div class="col-sm-4">
+    <!-- Preview Foto yang Lama -->
+    <?php if(!empty($data['foto_barang'])) { ?>
+      <img src="../pelanggan/images/Kirim/<?php echo $data['foto_barang']; ?>" 
+           alt="Foto Barang" width="100" style="margin-bottom:10px; display:block;">
+    <?php } ?>
+
+    <!-- Input Ganti Foto -->
+    <input type="file" name="foto_barang" id="foto_barang" class="form-control" accept="image/*">
+    <small class="text-muted">Kosongkan jika tidak ingin mengganti</small>
+  </div>
+</div>
+
+
                     <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label"></label>
                       <div class="col-sm-10">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-Kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -23,7 +23,7 @@
    <?php include "header.php"; ?>
    <div class="login-box">
     <div class="login-box-body">
-      <p class="login-box-msg">Login Pelanggan</p>
+      <p class="login-box-msg">Login Karyawan</p>
       <form action="proses_login.php" id="login" name="login" method="post">
         <div class="form-group has-feedback">
           <input type="text" id="username" name="username" class="form-control" autocomplete="off" placeholder="Username">

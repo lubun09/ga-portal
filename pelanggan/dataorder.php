@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -48,11 +48,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Data Order 
+            Data Pengiriman
           </h1>
           <ol class="breadcrumb">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Order</li>
+            <li class="active">Pengiriman</li>
           </ol>
         </section>
 
@@ -67,7 +67,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Data Order</h3>
+                  <h3 class="box-title">Data Pengiriman</h3>
                   <div class="box-tools pull-right"></div> 
                 </div><!-- /.box-header -->
               <div class="box-body">
@@ -79,14 +79,14 @@
                   $query = mysqli_query($db, $sql);
                   $total = mysqli_num_rows($query);
                   if ($total == 0) {
-                    echo"<center><h2>Belum Ada Data Order Anda</h2></center>";
+                    echo"<center><h2>Belum Ada Data Pengiriman Anda</h2></center>";
                   }
                   else{?>
                   <table id="lookup" class="table table-bordered table-hover">  
                    <thead bgcolor="eeeeee" align="left"> <!-- Changed alignment to left -->
                     <tr>
-                     <th>No Order</th>
-                     <th>Nama Barang</th>
+                     <th>ID Pemesanan</th>
+                     <th>Jenis Barang</th>
                      <th>Alamat Asal</th>
                      <th>Alamat Tujuan</th>
                      <th>Penerima</th>

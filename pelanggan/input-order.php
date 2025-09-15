@@ -1,170 +1,199 @@
 <?php 
 	session_start(); 
-	include "login/ceksession.php";?>
+	include "login/ceksession.php";
+?>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-Kurir</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="../assets/plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  </head>
-  
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GA-Messenger | Input Order</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-      <?php include "header.php"; ?>
-      <!-- Left side column. contains the logo and sidebar -->
-      <?php include "menu.php"; ?>
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins -->
+  <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../assets/plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- WYSIHTML5 -->
+  <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Input Order
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Order</li>
-          </ol>
+  <style>
+    /* Biar form lebih modern */
+    .box {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .form-control {
+      border-radius: 6px;
+      box-shadow: none !important;
+      transition: all 0.3s ease-in-out;
+    }
+    .form-control:focus {
+      border-color: #3c8dbc;
+      box-shadow: 0 0 5px rgba(60,141,188,0.5) !important;
+    }
+    .btn-lg {
+      border-radius: 6px;
+      padding: 10px 20px;
+    }
+    .help-block {
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <?php include "header.php"; ?>
+  <?php include "menu.php"; ?>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Input Order
+        <small>Form Pengisian Data Order</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Order</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <section class="col-lg-12 connectedSortable">
+
+          <!-- Card Form Order -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-cube"></i> Input Data Order</h3>
+            </div>
+            <div class="box-body">
+              <form class="form-horizontal" 
+                    action="proses/proses_input_order.php" 
+                    method="post" 
+                    enctype="multipart/form-data" 
+                    id="form1">
+
+<!-- Jenis Barang -->
+<div class="form-group has-feedback">
+  <label class="col-sm-2 control-label">Jenis Barang</label>
+  <div class="col-sm-6">
+    <select name="nama_barang" class="form-control" required>
+      <option value="Paket">Paket</option>
+      <option value="Dokumen">Dokumen</option>
+    </select>
+    <span class="glyphicon glyphicon-gift form-control-feedback"></span>
+  </div>
+</div>
+
+<!-- Deskripsi -->
+<div class="form-group has-feedback">
+  <label class="col-sm-2 control-label">Deskripsi</label>
+  <div class="col-sm-6">
+    <textarea name="deskripsi" 
+              class="form-control" 
+              placeholder="Dokumen ini tidak boleh dibanting" 
+              rows="2" 
+              required></textarea>
+    <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+  </div>
+</div>
+
+<!-- Alamat Asal -->
+<div class="form-group has-feedback">
+  <label class="col-sm-2 control-label">Alamat Asal</label>
+  <div class="col-sm-6">
+    <textarea name="alamat_asal" class="form-control" rows="2" readonly>Gama Tower, Daerah Khusus Ibukota Jakarta, Indonesia</textarea>
+    <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+  </div>
+</div>
+
+                <!-- Alamat Tujuan -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">Alamat Tujuan</label>
+                  <div class="col-sm-6">
+                    <textarea name="alamat_tujuan" class="form-control" placeholder="Alamat lengkap tujuan" rows="2" required></textarea>
+                    <span class="glyphicon glyphicon-send form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <!-- Penerima -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">Penerima</label>
+                  <div class="col-sm-6">
+                    <input name="penerima" type="text" class="form-control" placeholder="Nama penerima paket" required>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <!-- No HP -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">No HP Penerima</label>
+                  <div class="col-sm-6">
+                    <input type="text" name="no_hp_penerima" maxlength="20" 
+                           class="form-control" placeholder="08xxxxxxxxxxxxx" 
+                           onkeypress="return goodchars(event,'+0123456789',this)" required>
+                    <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <!-- Foto Barang -->
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Foto Barang</label>
+                  <div class="col-sm-6">
+                    <input type="file" name="foto_barang" class="form-control" accept="image/*" required>
+                    <p class="help-block"><i class="fa fa-info-circle text-blue"></i> Format: JPG/PNG | Maks: 2MB</p>
+                  </div>
+                </div>
+
+                <!-- Tombol -->
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-6">
+                    <button type="submit" 
+                            onclick="return confirm('Ingin melanjutkan ke proses selanjutnya?')" 
+                            class="btn btn-primary btn-lg">
+                      <i class="fa fa-paper-plane"></i> Submit
+                    </button>
+                    <a href="dataorder.php" class="btn btn-danger btn-lg">
+                      <i class="fa fa-times"></i> Batal
+                    </a>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
         </section>
+      </div>
+    </section>
+  </div>
+  
+  <?php include "footer.php"; ?>
+  <div class="control-sidebar-bg"></div>
+</div>
 
-        <!-- Main content -->
-        <section class="content">
-          <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <section class="col-lg-12 connectedSortable">
-
-              <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Input Data Order</h3>
-                  <div class="box-tools pull-right">
-                  </div> 
-                </div><!-- /.box-header -->
-                
-                <div class="box-body">
-                  <form class="form-horizontal style-form" action="proses/proses_input_order.php" method="post" enctype="multipart/form-data" name="form1" id="form1">
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Nama Barang</label>
-                      <div class="col-sm-4">
-                        <input name="nama_barang" type="text" id="nama_barang" class="form-control" placeholder="Nama Barang" autocomplete="off" required />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Alamat Asal</label>
-                      <div class="col-sm-4">
-                        <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Alamat Asal" autocomplete="off" required /></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Alamat Tujuan</label>
-                      <div class="col-sm-4">
-                        <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Alamat Tujuan" autocomplete="off" required /></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">Penerima</label>
-                      <div class="col-sm-4">
-                        <input name="penerima" type="text" id="penerima" class="form-control" placeholder="Nama Penerima" autocomplete="off" required />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label">No HP Penerima</label>
-                      <div class="col-sm-4">
-                        <input type="text"name="no_hp_penerima" id="no_hp_penerima" class="form-control" placeholder="Masukkan No HP Penerima" autocomplete="off" maxlength="12" onKeyPress="return goodchars(event,'0123456789',this)" required />
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label"></label>
-                      <div class="col-sm-10">
-                        <input type="submit" onclick="return confirm ('Ingin melanjutkan ke proses selanjutnya.? \nPengiriman tidak dapat dibatalkan!');" name="input" value="Input" class="btn btn-sm btn-primary" />&nbsp;
-                        <a href="dataorder.php" class="btn btn-sm btn-danger">Batal</a>
-                      </div> 
-                    </div>
-                  </form>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-
-            </section><!-- /.Left col -->
-          </div><!-- /.row (main row) -->
-
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-      <?php include "footer.php"; ?>
-
-      <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-       <div class="control-sidebar-bg"></div>
-     </div><!-- ./wrapper -->
-
-     <!-- jQuery 2.1.4 -->
-     <script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-     <!-- jQuery UI 1.11.4 -->
-     <script src="../assets/css/jquery-ui.min.js"></script>
-     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-     <script>
-     $.widget.bridge('uibutton', $.ui.button);
-   </script>
-   <!-- Bootstrap 3.3.5 -->
-   <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- Morris.js charts -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-   <script src="../assets/plugins/morris/morris.min.js"></script>
-   <!-- Sparkline -->
-   <script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-   <!-- jvectormap -->
-   <script src="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-   <script src="../assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-   <!-- jQuery Knob Chart -->
-   <script src="../assets/plugins/knob/jquery.knob.js"></script>
-   <!-- daterangepicker -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-   <script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
-   <!-- datepicker -->
-   <script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-   <!-- Bootstrap WYSIHTML5 -->
-   <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-   <!-- Slimscroll -->
-   <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-   <!-- FastClick -->
-   <script src="../assets/plugins/fastclick/fastclick.min.js"></script>
-   <!-- AdminLTE App -->
-   <script src="../assets/dist/js/app.min.js"></script>
-   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-   <script src="../assets/dist/js/pages/dashboard.js"></script>
-   <!-- AdminLTE for demo purposes -->
-   <script src="../assets/dist/js/demo.js"></script>
-   <script>
-	//options method for call datepicker
-	$(".input-group.date").datepicker({ autoclose: true, todayHighlight: true });
-	
-</script>
+<!-- JS -->
+<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="../assets/dist/js/app.min.js"></script>
 </body>
 </html>

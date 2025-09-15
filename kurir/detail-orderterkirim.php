@@ -1,208 +1,138 @@
 <?php 
 session_start(); 
-include "login/ceksession.php";?>
+include "login/ceksession.php";
+include '../koneksi/koneksi.php';
+?>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>e-kurir</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.5 -->
+  <title>GA-Messenger</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="../assets/css/ionicons.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-     folder instead of downloading all of them to reduce the load. -->
-     <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-     <!-- iCheck -->
-     <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css">
-     <!-- Morris chart -->
-     <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
-     <!-- jvectormap -->
-     <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-     <!-- Date Picker -->
-     <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
-     <!-- Daterange picker -->
-     <link rel="stylesheet" href="../assets/plugins/daterangepicker/daterangepicker-bs3.css">
-     <!-- bootstrap wysihtml5 - text editor -->
-     <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
+  <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
+  <style>
+    .view-link { color:#007bff; text-decoration:underline; cursor:pointer; }
+    .view-link:hover { color:#0056b3; }
+  </style>
 </head>
-    
-    <body class="hold-transition skin-blue sidebar-mini">
-      <div class="wrapper">
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <?php include "header.php"; ?>
+  <?php include "menu.php"; ?>
 
-        <?php include "header.php"; ?>
-        <!-- Left side column. contains the logo and sidebar -->
-        <?php include "menu.php"; ?>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>Detail Order Terkirim</h1>
+      <ol class="breadcrumb">
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Detail Order Terkirim</li>
+      </ol>
+    </section>
 
+    <section class="content">
+      <div class="row">
+        <section class="col-lg-12 connectedSortable">
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+              <h3 class="box-title">Detail Order Terkirim</h3>
+            </div>
+            <div class="box-body">
+              <div class="form-panel">
+                <?php 
+                  $no_transaksi = $_GET['no_transaksi'];
+                  $sql = "SELECT t.*, p.nama_pelanggan, k.nama_kurir, k.no_hp_kurir 
+                          FROM tb_transaksi t
+                          LEFT JOIN tb_pelanggan p ON t.pengirim = p.id_pelanggan
+                          LEFT JOIN tb_kurir k ON t.kurir = k.id_kurir
+                          WHERE t.no_transaksi='$no_transaksi'";
+                  $query = mysqli_query($db, $sql);
+                  $data = mysqli_fetch_array($query);
+                ?>
+                <table class="table table-bordered table-hover">
+                  <tr><td>ID Pemesanan</td><td><?php echo $data['no_transaksi']; ?></td></tr>
+                  <tr><td>Jenis Barang</td><td><?php echo $data['nama_barang']; ?></td></tr>
+                  <tr><td>Deskripsi</td><td><?php echo $data['deskripsi']; ?></td></tr>
+                  <tr><td>Alamat Asal</td><td><?php echo $data['alamat_asal']; ?></td></tr>
+                  <tr><td>Alamat Tujuan</td><td><?php echo $data['alamat_tujuan']; ?></td></tr>
+                  <tr><td>Pengirim</td><td><?php echo $data['nama_pelanggan']; ?></td></tr>
+                  <tr><td>Penerima</td><td><?php echo $data['penerima']; ?></td></tr>
+                  <tr><td>No Hp Penerima</td><td><?php echo $data['no_hp_penerima']; ?></td></tr>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-          <!-- Content Header (Page header) -->
-          <section class="content-header">
-            <h1>
-              Detail Order
-            </h1>
-            <ol class="breadcrumb">
-              <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-              <li class="active">Detail Oder</li>
-            </ol>
-          </section>
+                  <!-- Foto Barang -->
+                  <tr>
+                    <td>Foto Barang</td>
+                    <td>
+                      <?php if(!empty($data['foto_barang'])) { ?>
+                        <span class="view-link" data-img="../pelanggan/images/Kirim/<?php echo $data['foto_barang']; ?>">View</span>
+                      <?php } else { echo "<span class='text-muted'>Tidak ada foto</span>"; } ?>
+                    </td>
+                  </tr>
 
-          <!-- Main content -->
-          <section class="content">
-            <!-- Main row -->
-            <div class="row">
-              <!-- Left col -->
-              <section class="col-lg-12 connectedSortable">
+                  <!-- Barang Diambil -->
+                  <tr>
+                    <td>Barang Diambil</td>
+                    <td>
+                      <?php if(!empty($data['gambar_awal'])) { ?>
+                        <span class="view-link" data-img="../kurir/images/diambil/<?php echo $data['gambar_awal']; ?>">View</span>
+                      <?php } else { echo "<span class='text-muted'>Tidak ada foto</span>"; } ?>
+                    </td>
+                  </tr>
 
-                <!-- TO DO List -->
-                <div class="box box-primary">
-                  <div class="box-header">
-                    <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">Detail Order Terkirim</h3>
-                  <!-- <div class="box-tools pull-right">
-                    <ul class="pagination pagination-sm inline">
-                      <li><a href="#">&laquo;</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">&raquo;</a></li>
-                    </ul>
-                  </div> -->
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="form-panel">
-                    <table id="example" class="table table-hover table-bordered">
-                     <?php include '../koneksi/koneksi.php';
-                     $no_transaksi= $_GET['no_transaksi'];
-                     $sql  		= "SELECT * FROM tb_transaksi inner join tb_pelanggan on tb_transaksi.pengirim = tb_pelanggan.id_pelanggan where no_transaksi='".$no_transaksi."'";                        
-                     $query  	= mysqli_query($db, $sql);
-                     $data 		= mysqli_fetch_array($query);?>
-                     <tr>
-                      <td>No Order</td>
-                      <td><?php echo $data['no_transaksi'];?></td>
-                    </tr>
-                    <tr>
-                      <td>Nama Barang</td></td>
-                      <td><?php echo $data['nama_barang'];?></td>
-                    </tr>
-                  </tr>
+                  <!-- Barang Diterima -->
                   <tr>
-                    <td width="250">Alamat Asal</td>
-                    <td width="700" colspan="1"><?php echo $data['alamat_asal'];?></td>
+                    <td>Barang Diterima</td>
+                    <td>
+                      <?php if(!empty($data['gambar_akhir'])) { ?>
+                        <span class="view-link" data-img="../kurir/images/selesai/<?php echo $data['gambar_akhir']; ?>">View</span>
+                      <?php } else { echo "<span class='text-muted'>Tidak ada foto</span>"; } ?>
+                    </td>
                   </tr>
-                  <tr>
-                    <td>Alamat Tujuan</td>
-                    <td><?php echo $data['alamat_tujuan'];?></td>
-                  </tr>
-                  <tr>
-                    <td>Pengirim</td></td>
-                    <td><?php echo $data['pengirim'];?></td>
-                  </tr>
-                  <tr>
-                    <td>Penerima</td>
-                    <td><?php echo $data['penerima'];?></td>
-                  </tr>
-                  <tr>
-                    <td>No Hp Penerima</td></td>
-                    <td><?php echo $data['no_hp_penerima'];?></td>
-                  </tr>        					  
-                  <tr>
-                    <td>Berat Barang</td></td>
-                    <td><?php echo $data['berat_barang'];?>&nbsp kg</td>
-                  </tr>
-                  <tr>
-                    <td>Biaya</td></td>
-                    <td>Rp &nbsp<?php echo $data['biaya'];?></td>
-                  </tr>
-                  <tr>
-                    <td>Status</td></td>
-                    <td><?php echo $data['status'];?></td>
-                  </tr>
-                  <tr>
-                    <td>Waktu</td></td>
-                    <td><?php echo $data['waktu'];?></td>
-                  </tr>
-                  <tr>
-                    <td>Penilaian</td></td>
-                    <td><?php if($data['penilaian'] == 0){echo"Belum Ada Penilaian";} else{ echo $data['penilaian'];}?></td>
-                  </tr>
-                  <tr>
-                    <td>Komentar</td></td>
-                    <td><?php if($data['komentar'] == ''){echo"Belum Ada Komentar";} else{ echo $data['komentar'];}?></td>
-                  </tr>
+
+                  <tr><td>Status</td><td><?php echo $data['status']; ?></td></tr>
+                  <tr><td>Waktu</td><td><?php echo $data['waktu']; ?></td></tr>
+                  <tr><td>Penilaian</td><td><?php echo ($data['penilaian']==0)?"Belum Ada Penilaian":$data['penilaian']; ?></td></tr>
+                  <tr><td>Komentar</td><td><?php echo ($data['komentar']=='')?"Belum Ada Komentar":$data['komentar']; ?></td></tr>
                 </table>
+
                 <div class="text-right">
                   <a href="orderterkirim.php" class="btn btn-sm btn-warning">Kembali <i class="fa fa-arrow-circle-right"></i></a>
-
                 </div>
               </div>
-            </div><!-- /.box-body -->
-                <!-- <div class="box-footer clearfix no-border">
-                  <a href="#" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Tambah Admin</a>
-                </div> -->
-              </div><!-- /.box -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
 
-            </section><!-- /.Left col -->
-          </div><!-- /.row (main row) -->
+  <?php include "footer.php"; ?>
+  <div class="control-sidebar-bg"></div>
+</div>
 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-      <?php include "footer.php"; ?>
+<!-- Modal View Image -->
+<div class="modal fade" id="modalViewImage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img id="imgPreview" src="" style="max-width:100%; border-radius:5px;">
+      </div>
+    </div>
+  </div>
+</div>
 
-      immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.4 -->
-    <script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-    $.widget.bridge('uibutton', $.ui.button);
-  </script>
-  <!-- Bootstrap 3.3.5 -->
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <!-- Morris.js charts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="../assets/plugins/morris/morris.min.js"></script>
-  <!-- Sparkline -->
-  <script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-  <!-- jvectormap -->
-  <script src="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-  <script src="../assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="../assets/plugins/knob/jquery.knob.js"></script>
-  <!-- daterangepicker -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-  <script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- datepicker -->
-  <script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-  <!-- Bootstrap WYSIHTML5 -->
-  <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-  <!-- Slimscroll -->
-  <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src="../assets/plugins/fastclick/fastclick.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../assets/dist/js/app.min.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="../assets/dist/js/pages/dashboard.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../assets/dist/js/demo.js"></script>
+<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+  $(document).on('click', '.view-link', function() {
+    var imgSrc = $(this).data('img');
+    $('#imgPreview').attr('src', imgSrc);
+    $('#modalViewImage').modal('show');
+  });
+</script>
 </body>
 </html>

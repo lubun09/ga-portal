@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -74,15 +74,6 @@
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
                   <h3 class="box-title">Detail Data Kurir</h3>
-                  <!-- <div class="box-tools pull-right">
-                    <ul class="pagination pagination-sm inline">
-                      <li><a href="#">&laquo;</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">&raquo;</a></li>
-                    </ul>
-                  </div> -->
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="form-panel">
@@ -130,6 +121,10 @@
                 <tr>
                   <td>No HP</td></td>
                   <td><?php echo $data['no_hp_kurir'];?></td>
+                </tr>
+                <tr>
+                  <td>Emial</td></td>
+                  <td><?php echo $data['email_kurir'];?></td>
                 </tr>
                 <tr>
                   <td>No Plat</td></td>

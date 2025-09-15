@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -93,11 +93,11 @@
                      $data 		= mysqli_fetch_array($query);
                      ?>
                      <tr>
-                      <td>No Order</td>
+                      <td>ID Pemesanan</td>
                       <td><?php echo $data['no_transaksi'];?></td>
                     </tr>
                     <tr>
-                      <td>Nama Barang</td></td>
+                      <td>Jenis Barang</td></td>
                       <td><?php echo $data['nama_barang'];?></td>
                     </tr>
                     <tr>
@@ -134,12 +134,12 @@
                    }
                  else if ($data['status']== 'Proses Pengiriman' or $data['status']== 'Terkirim' ){
                    echo'<tr>
-                   <td>Berat Barang</td>
-                   <td>'.$data['berat_barang'].'&nbsp kg</td>
+                   <td>Barang Diambil</td>
+                   <td>'.$data['gambar_awal'].'&nbsp</td>
                    </tr>
                    <tr>
-                   <td>Biaya</td>
-                   <td>Rp &nbsp'.$data['biaya'].'</td>
+                   <td>Barang Diterima</td>
+                   <td>&nbsp'.$data['gambar_akhir'].'</td>
                    </tr>
                    <tr>
                    <td>Kurir</td></td>

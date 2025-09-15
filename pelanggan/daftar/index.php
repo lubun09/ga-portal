@@ -1,93 +1,73 @@
-<?php 
-	session_start(); 
-	include "ceksession.php";?>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-Kurir</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pelanggan GA-Messenger</title>
     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../assets/dist/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="../../assets/dist/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../assets/dist/css/AdminLTE.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../assets/plugins/iCheck/square/blue.css">
-  </head>
-  
-  <body class="hold-transition register-page">
-    <div class="register-box">
-      <?php include "header.php"; ?>
-      <br><br>
-      <div class="register-box-body">
-        <p class="login-box-msg">Daftar Pelanggan Baru</p>
-
+    <style>
+        body { background: #f4f6f9; }
+        .form-container { max-width: 500px; margin: 50px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        #preview-img { max-width: 100%; margin-top: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3 class="text-center">Form Pendaftaran Pelanggan</h3>
         <form action="proses_daftar.php" method="post" enctype="multipart/form-data">
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="nama_pelanggan" placeholder="Nama Lengkap" required>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="username_pelanggan" placeholder="Username" required>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
-          <div class="form-group ">
-            <input type="date" class="form-control" name="tanggal_lahir" data-date-format="dd-mm-yyyy" placeholder="Tanggal Lahir" required>
-          </div>
-          <div class="form-group has-feedback">
-            <textarea class="form-control" name="alamat_pelanggan" placeholder="Alamat"></textarea>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="no_hp_pelanggan" placeholder="No Handphone" autocomplete="off" maxlength="12" onKeyPress="return goodchars(event,'0123456789',this)" required>
-          </div>
-          <div class="form-group">
-            <label for="inputGambar">Foto Profil</label>
-            <input type="file" accept="image/png,image/jpeg,image/jpg" id="inputGambar" name="gambar" required>*max 2mb
-          </div>
-
-          <div class="row">
-            <div class="col-xs-8">
-              <a href="../login" class="text-center">Sudah Punya Akun ? Login !</a>
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="nama_pelanggan" class="form-control" required>
             </div>
-            <!-- /.col -->
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username_pelanggan" class="form-control" required>
             </div>
-            <!-- /.col -->
-          </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="date" name="tanggal_lahir" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Alamat</label>
+                <textarea name="alamat_pelanggan" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>No HP</label>
+                <input type="text" name="no_hp_pelanggan" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email_pelanggan" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Foto Profil (jpg, jpeg, png, gif max 2MB)</label>
+                <input type="file" name="gambar" class="form-control-file" accept=".jpg,.jpeg,.png,.gif" onchange="previewImage(event)">
+                <img id="preview-img" src="#" alt="Preview Gambar" style="display:none;">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
         </form>
-
-      </div>
-      <!-- /.form-box -->
+        <p class="text-center mt-2"><a href="../../../ga-messenger">Kembali ke Login</a></p>
     </div>
 
-    <?php include "footer.php"; ?>
-    <br>
-    
-
-    <!-- jQuery 2.1.4 -->
-    <script src="../../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="../../assets/plugins/iCheck/icheck.min.js"></script>
     <script>
-    $(function () {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-    });
-  </script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview-img');
+            if(input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

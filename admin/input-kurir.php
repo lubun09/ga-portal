@@ -6,7 +6,7 @@ include "login/ceksession.php";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>e-Kurir</title>
+  <title>GA-Messenger</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -108,6 +108,15 @@ include "login/ceksession.php";
                         <input type="text"name="no_hp_kurir" id="no_hp_kurir" class="form-control" placeholder="Masukkan No HP" autocomplete="off" maxlength="12" onKeyPress="return goodchars(event,'0123456789',this)" required />
                       </div>
                     </div>
+                    
+<div class="form-group">
+  <label class="col-sm-2 col-sm-2 control-label">Email Kurir</label>
+  <div class="col-sm-4">
+    <input type="email" name="email_kurir" id="email_kurir" class="form-control" placeholder="Masukkan Email" autocomplete="off" required />
+  </div>
+</div>
+
+
                     <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">No Plat</label>
                       <div class="col-sm-4">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -92,11 +92,11 @@
                      $query  	= mysqli_query($db, $sql);
                      $data 		= mysqli_fetch_array($query);?>
                      <tr>
-                      <td>No Order</td>
+                      <td>ID Pemesanan</td>
                       <td><?php echo $data['no_transaksi'];?></td>
                     </tr>
                     <tr>
-                      <td>Nama Barang</td></td>
+                      <td>Jenis Barang</td>
                       <td><?php echo $data['nama_barang'];?></td>
                     </tr>
                     <tr>
@@ -112,39 +112,39 @@
                       <td><?php echo $data['penerima'];?></td>
                     </tr>                      
                     <tr>
-                      <td>Berat Barang</td></td>
-                      <td><?php echo $data['berat_barang'];?>&nbsp kg</td>
+                      <td>Barang Diambil</td>
+                      <td><?php echo $data['gambar_awal'];?>&nbsp</td>
                     </tr>
                     <tr>
-                      <td>Biaya</td></td>
-                      <td>Rp &nbsp<?php echo $data['biaya'];?></td>
+                      <td>Barang Diterima</td>
+                      <td>&nbsp<?php echo $data['gambar_akhir'];?></td>
                     </tr>
                     <tr>
-                      <td>No Hp Penerima</td></td>
+                      <td>No Hp Penerima</td>
                       <td><?php echo $data['no_hp_penerima'];?></td>
                     </tr>
                     <tr>
-                      <td>Kurir</td></td>
+                      <td>Kurir</td>
                       <td><?php echo $data['nama_kurir'];?></td>
                     </tr>
                     <tr>
-                      <td>No HP Kurir</td></td>
+                      <td>No HP Kurir</td>
                       <td><?php echo $data['no_hp_kurir'];?></td>
                     </tr>
                     <tr>
-                      <td>Status</td></td>
+                      <td>Status</td>
                       <td><?php echo $data['status'];?></td>
                     </tr>
                     <tr>
-                      <td>Waktu</td></td>
+                      <td>Waktu</td>
                       <td><?php echo $data['waktu'];?></td>
                     </tr>
                     <tr>
-                      <td>Penilaian</td></td>
+                      <td>Penilaian</td>
                       <td><?php if($data['penilaian'] == 0){echo"Belum Ada Penilaian";} else{ echo $data['penilaian'];}?></td>
                     </tr>
                     <tr>
-                      <td>Komentar</td></td>
+                      <td>Komentar</td>
                       <td><?php if($data['komentar'] == ''){echo"Belum Ada Komentar";} else{ echo $data['komentar'];}?></td>
                     </tr>
                   </table>

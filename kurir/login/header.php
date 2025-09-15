@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../../index.php">e-Kurir</a>
+            <a class="navbar-brand" href="../../index.php">GA-Messenger</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -23,7 +23,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="../../admin/login">Admin</a></li>
                   <li><a href="">Kurir</a></li>
-                  <li><a href="../../pelanggan/login">Pelanggan</a></li>
+                  <li><a href="../../pelanggan/login">Karyawan</a></li>
               </ul>
           </li> 
       </ul>

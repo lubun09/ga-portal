@@ -6,7 +6,7 @@ include "login/ceksession.php";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>e-kurir</title>
+  <title>GA-Messenger</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -58,7 +58,7 @@ include "login/ceksession.php";
             </h1>
             <ol class="breadcrumb">
               <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-              <li class="active">Detail Pelanggan</li>
+              <li class="active">Detail Karyawan</li>
             </ol>
           </section>
 
@@ -73,7 +73,7 @@ include "login/ceksession.php";
                 <div class="box box-primary">
                   <div class="box-header">
                     <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">Detail Data Pelanggan</h3>
+                    <h3 class="box-title">Detail Data Karyawan</h3>
                   <!-- <div class="box-tools pull-right">
                     <ul class="pagination pagination-sm inline">
                       <li><a href="#">&laquo;</a></li>
@@ -116,6 +116,10 @@ include "login/ceksession.php";
                     <tr>
                       <td>No HP</td></td>
                       <td><?php echo $data['no_hp_pelanggan'];?></td>
+                    </tr>
+                    <tr>
+                    <td>Email</td>
+                      <td><?php echo $data['email_pelanggan'];?></td>
                     </tr>
                   </table>
                   <div class="text-right">

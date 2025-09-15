@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -48,11 +48,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Data Pelanggan
+            Data Karyawan
           </h1>
           <ol class="breadcrumb">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Data Pelanggan</li>
+            <li class="active">Data Karyawan</li>
           </ol>
         </section>
 
@@ -67,11 +67,19 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Data Pelanggan</h3>
+                  <h3 class="box-title">Data Karyawan</h3>
+                    <div class="box-tools pull-right">
+                      <a href="input-karyawan.php" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i> Tambah Karyawan
+                      </a>
+                    </div>
                   <div class="box-tools pull-right"></div> 
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
+
+
+                
                   <div class="table-responsive">  <!-- Added responsive table wrapper -->
                     <?php
                     include '../koneksi/koneksi.php';
@@ -79,7 +87,7 @@
                     $query1 = mysqli_query($db, $sql1);
                     $total = mysqli_num_rows($query1);
                     if ($total == 0) {
-                      echo "<center><h2>Belum Ada Pelanggan Terdaftar</h2></center>";
+                      echo "<center><h2>Belum Ada Karyawan Terdaftar</h2></center>";
                     }
                     else {?>
                     <table id="lookup" class="table table-bordered table-hover">  
@@ -91,7 +99,7 @@
                        <th>Tanggal Lahir</th>
                        <th>Alamat</th>
                        <th>No Hp</th>
-                       <th>Orderan</th>
+                       <th>Pengiriman</th>
                        <th class="text-center"> Action </th> 
                       </tr>
                      </thead>
@@ -106,7 +114,7 @@
                           <td>' . $data['alamat_pelanggan'] . '</td>
                           <td>' . $data['no_hp_pelanggan'] . '</td>
                           <td style="text-align:center;">
-                            <a href="orderanpelanggan.php?id_pelanggan=' . $data['id_pelanggan'] . '">Lihat Orderan</a>
+                            <a href="orderanpelanggan.php?id_pelanggan=' . $data['id_pelanggan'] . '">Lihat Data</a>
                           </td>
                           <td style="text-align:center;">
                             <a href="detail-pelanggan.php?id_pelanggan=' . $data['id_pelanggan'] . '">Detail</a>

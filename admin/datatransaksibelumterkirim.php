@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>e-kurir</title>
+    <title>GA-Messenger</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -86,7 +86,7 @@
                    <thead bgcolor="eeeeee" align="left"> <!-- Changed align to left -->
                     <tr>
                      <th>No Transaksi</th>
-                     <th>Nama Barang</th>
+                     <th>Jenis Barang</th>
                      <th>Alamat Asal</th>
                      <th>Alamat Tujuan</th>    
                      <th>Pengirim</th>
