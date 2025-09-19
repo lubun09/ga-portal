@@ -7,6 +7,7 @@ include '../koneksi/koneksi.php';
 <head>
 <meta charset="utf-8">
 <title>GA-Messenger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- biar responsif -->
 <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
@@ -95,6 +96,7 @@ else echo "<span class='text-muted'>Tidak ada foto</span>";
 
 <script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/dist/js/app.min.js"></script> <!-- WAJIB untuk toggle sidebar -->
 <script>
 $(document).on('click', '.view-link', function() {
     var imgSrc = $(this).data('img');

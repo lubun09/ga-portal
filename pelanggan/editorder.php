@@ -83,6 +83,12 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label">Deskripsi</label>
+                      <div class="col-sm-4">
+                        <textarea name="deskripsi" id="Deskripsi" class="form-control" placeholder="deskripsi" autocomplete="off" required /><?php echo $data['deskripsi'];?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Alamat Asal</label>
                       <div class="col-sm-4">
                         <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Alamat Asal" autocomplete="off" required /><?php echo $data['alamat_asal'];?></textarea>
@@ -107,20 +113,20 @@
                       </div>
                     </div>
                     
-<div class="form-group">
-  <label class="col-sm-2 col-sm-2 control-label">Foto Barang</label>
-  <div class="col-sm-4">
-    <!-- Preview Foto yang Lama -->
-    <?php if(!empty($data['foto_barang'])) { ?>
-      <img src="../pelanggan/images/Kirim/<?php echo $data['foto_barang']; ?>" 
-           alt="Foto Barang" width="100" style="margin-bottom:10px; display:block;">
-    <?php } ?>
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label">Foto Barang</label>
+                      <div class="col-sm-4">
+                        <!-- Preview Foto yang Lama -->
+                        <?php if(!empty($data['foto_barang'])) { ?>
+                          <img src="../pelanggan/images/Kirim/<?php echo $data['foto_barang']; ?>" 
+                              alt="Foto Barang" width="100" style="margin-bottom:10px; display:block;">
+                        <?php } ?>
 
-    <!-- Input Ganti Foto -->
-    <input type="file" name="foto_barang" id="foto_barang" class="form-control" accept="image/*">
-    <small class="text-muted">Kosongkan jika tidak ingin mengganti</small>
-  </div>
-</div>
+                        <!-- Input Ganti Foto -->
+                        <input type="file" name="foto_barang" id="foto_barang" class="form-control" accept="image/*">
+                        <small class="text-muted">Kosongkan jika tidak ingin mengganti</small>
+                      </div>
+                    </div>
 
 
                     <div class="form-group">

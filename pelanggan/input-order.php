@@ -90,45 +90,45 @@
                     enctype="multipart/form-data" 
                     id="form1">
 
-<!-- Jenis Barang -->
-<div class="form-group has-feedback">
-  <label class="col-sm-2 control-label">Jenis Barang</label>
-  <div class="col-sm-6">
-    <select name="nama_barang" class="form-control" required>
-      <option value="Paket">Paket</option>
-      <option value="Dokumen">Dokumen</option>
-    </select>
-    <span class="glyphicon glyphicon-gift form-control-feedback"></span>
-  </div>
-</div>
+                <!-- Jenis Barang -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">Jenis Barang</label>
+                  <div class="col-sm-6">
+                    <select name="nama_barang" class="form-control" required>
+                      <option value="Paket">Paket</option>
+                      <option value="Dokumen">Dokumen</option>
+                    </select>
+                    <span class="glyphicon glyphicon-gift form-control-feedback"></span>
+                  </div>
+                </div>
 
-<!-- Deskripsi -->
-<div class="form-group has-feedback">
-  <label class="col-sm-2 control-label">Deskripsi</label>
-  <div class="col-sm-6">
-    <textarea name="deskripsi" 
-              class="form-control" 
-              placeholder="Dokumen ini tidak boleh dibanting" 
-              rows="2" 
-              required></textarea>
-    <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
-  </div>
-</div>
+                <!-- Deskripsi -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">Deskripsi</label>
+                  <div class="col-sm-6">
+                    <textarea name="deskripsi" 
+                              class="form-control" 
+                              placeholder="Dokemen Kontrak Asli / No.Invoice" 
+                              rows="2" 
+                              required></textarea>
+                    <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                  </div>
+                </div>
 
-<!-- Alamat Asal -->
-<div class="form-group has-feedback">
-  <label class="col-sm-2 control-label">Alamat Asal</label>
-  <div class="col-sm-6">
-    <textarea name="alamat_asal" class="form-control" rows="2" readonly>Gama Tower, Daerah Khusus Ibukota Jakarta, Indonesia</textarea>
-    <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
-  </div>
-</div>
+                <!-- Alamat Asal -->
+                <div class="form-group has-feedback">
+                  <label class="col-sm-2 control-label">Alamat Asal</label>
+                  <div class="col-sm-6">
+                    <textarea name="alamat_asal" class="form-control" rows="2">Gama Tower, Daerah Khusus Ibukota Jakarta, Indonesia</textarea>
+                    <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+                  </div>
+                </div>
 
                 <!-- Alamat Tujuan -->
                 <div class="form-group has-feedback">
                   <label class="col-sm-2 control-label">Alamat Tujuan</label>
                   <div class="col-sm-6">
-                    <textarea name="alamat_tujuan" class="form-control" placeholder="Alamat lengkap tujuan" rows="2" required></textarea>
+                    <textarea name="alamat_tujuan" class="form-control" placeholder="PT. ABCDEF : Alamat lengkap tujuan" rows="2" required></textarea>
                     <span class="glyphicon glyphicon-send form-control-feedback"></span>
                   </div>
                 </div>

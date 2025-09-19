@@ -24,7 +24,7 @@
         <ul class="treeview-menu" style="padding-left: 15px;">
           <li>
             <a href="ambilorder.php?no_transaksi=" style="border-radius: 6px; margin: 3px 0; color: #ccc;">
-              <i class="fa fa-circle-o"></i> Ambil
+              <i class="fa fa-circle-o"></i> Pengiriman
             </a>
           </li>
           <li>

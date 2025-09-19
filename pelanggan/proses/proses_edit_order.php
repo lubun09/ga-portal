@@ -4,6 +4,7 @@ include '../../koneksi/koneksi.php';
 
 $no_transaksi   = $_GET['no_transaksi'];
 $nama_barang    = mysqli_real_escape_string($db, $_POST['nama_barang']);
+$deskripsi    = mysqli_real_escape_string($db, $_POST['deskripsi']);
 $alamat_asal    = mysqli_real_escape_string($db, $_POST['alamat_asal']);
 $alamat_tujuan  = mysqli_real_escape_string($db, $_POST['alamat_tujuan']);
 $penerima       = mysqli_real_escape_string($db, $_POST['penerima']);
@@ -41,6 +42,7 @@ if(!empty($foto_barang)){
 // update data
 $sql = "UPDATE tb_transaksi SET 
         nama_barang='$nama_barang',
+        deskripsi='$deskripsi',
         alamat_asal='$alamat_asal',
         alamat_tujuan='$alamat_tujuan',
         penerima='$penerima',

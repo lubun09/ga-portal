@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GA-Messenger</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
@@ -17,142 +16,127 @@
     <link rel="stylesheet" href="../assets/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-     folder instead of downloading all of them to reduce the load. -->
-     <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-     <!-- iCheck -->
-     <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css">
-     <!-- Morris chart -->
-     <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
-     <!-- jvectormap -->
-     <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-     <!-- Date Picker -->
-     <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
-     <!-- Daterange picker -->
-     <link rel="stylesheet" href="../assets/plugins/daterangepicker/daterangepicker-bs3.css">
-     <!-- bootstrap wysihtml5 - text editor -->
-     <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-     <!-- css table datatables/dataTables -->
-     <link rel="stylesheet" href="../assets/plugins/datatables/dataTables.bootstrap.css"/>
+    <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
+    <!-- Custom style for card -->
+    <style>
+      .order-link {
+        text-decoration: none;
+        color: inherit;
+      }
+      .order-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        position: relative;
+        transition: background 0.2s ease;
+      }
+      .order-card:hover {
+        background: #f9f9f9;
+      }
+      .order-card h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+      }
+      .order-card p {
+        margin: 5px 0;
+        color: #555;
+      }
+      .order-card .status {
+        margin-top: 5px;
+      }
+      .order-card .ubah-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 45px;
+      }
+      .order-card .arrow {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #bbb;
+      }
+    </style>
   </head>
 
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
       <?php include "header.php"; ?>
-      <!-- Left side column. contains the logo and sidebar -->
       <?php include "menu.php"; ?>
 
-      <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Data Pengiriman
-          </h1>
+          <h1>Data Order</h1>
           <ol class="breadcrumb">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Pengiriman</li>
           </ol>
         </section>
 
-        <!-- Main content -->
         <section class="content">
-          <!-- Main row -->
           <div class="row">
-            <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
 
-              <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Data Pengiriman</h3>
-                  <div class="box-tools pull-right"></div> 
-                </div><!-- /.box-header -->
-              <div class="box-body">
-
-                <div class="table-responsive">  <!-- Added responsive table wrapper -->
+              <div class="box box-default">
+                <div class="box-body">
                   <?php
-                  include '../koneksi/koneksi.php';
-                  $sql = "SELECT * FROM tb_transaksi where pengirim='".$_SESSION['id']."' and status NOT LIKE 'Terkirim' order by no_transaksi asc";                        
-                  $query = mysqli_query($db, $sql);
-                  $total = mysqli_num_rows($query);
-                  if ($total == 0) {
-                    echo"<center><h2>Belum Ada Data Pengiriman Anda</h2></center>";
-                  }
-                  else{?>
-                  <table id="lookup" class="table table-bordered table-hover">  
-                   <thead bgcolor="eeeeee" align="left"> <!-- Changed alignment to left -->
-                    <tr>
-                     <th>ID Pemesanan</th>
-                     <th>Jenis Barang</th>
-                     <th>Alamat Asal</th>
-                     <th>Alamat Tujuan</th>
-                     <th>Penerima</th>
-                     <th>No Hp Penerima</th>
-                     <th>Status</th>
-                     <th class="text-center"> Action </th>      
-                   </tr>
-                 </thead>
-                 <?php 			
-                 while($data = mysqli_fetch_array($query)){
-                  echo'<tr>
-                  <td>	'. $data['no_transaksi'].'   	</td>
-                  <td>	'. $data['nama_barang'].'		</td>
-                  <td>	'. $data['alamat_asal'].'		</td>
-                  <td>	'. $data['alamat_tujuan'].'   	</td>
-                  <td>	'. $data['penerima'].'			</td>
-                  <td>	'. $data['no_hp_penerima'].'	</td>
-                  <td>	'. $data['status'].'			</td>
-                  <td style="text-align:center;">';
-                  if ($data['status']=='Belum Terkirim'){
-                   echo '<a href=editorder.php?no_transaksi='.$data['no_transaksi'].'>Ubah &nbsp||&nbsp</a>';
-                 }
-                 echo'<a href=detail-order.php?no_transaksi='.$data['no_transaksi'].'> Detail</a></td>
-                 </tr>';
-               }
-               ?>
-               <tbody>		 
-               </tbody>
-             </table>
-             <?php }?>
-           </div>
-         </div><!-- /.box-body -->
-       </div><!-- /.box -->
+                    include '../koneksi/koneksi.php';
+                    $sql = "SELECT * FROM tb_transaksi WHERE pengirim='".$_SESSION['id']."' AND status NOT LIKE 'Terkirim' ORDER BY no_transaksi ASC";                        
+                    $query = mysqli_query($db, $sql);
+                    $total = mysqli_num_rows($query);
+                    if ($total == 0) {
+                      echo "<div class='text-center'><h4 class='text-muted'>Belum Ada Data Pengiriman Anda</h4></div>";
+                    } else {
+                      while($data = mysqli_fetch_array($query)){ 
+                  ?>
+                    <a href="detail-order.php?no_transaksi=<?= $data['no_transaksi']; ?>" class="order-link">
+                      <div class="order-card">
+                        <h4><i class="fa fa-dropbox text-blue"></i> ID Pemesanan: <?= $data['no_transaksi']; ?></h4>
+                        <p><b>Barang:</b> <?= $data['nama_barang']; ?> | <b>Pengirim:</b> <?= $data['pengirim']; ?></p>
+                        <div class="status">
+                          <b>Status:</b>
+                          <?php if($data['status']=="Belum Terkirim"){ ?>
+                            <span class="label label-warning"><?= $data['status']; ?></span>
+                          <?php } else { ?>
+                            <span class="label label-success"><?= $data['status']; ?></span>
+                          <?php } ?>
+                        </div>
+                        <?php if ($data['status']=='Belum Terkirim'){ ?>
+                          <a class="btn btn-xs btn-warning ubah-btn" href="editorder.php?no_transaksi=<?= $data['no_transaksi']; ?>" onclick="event.stopPropagation();">
+                            <i class="fa fa-edit"></i> Ubah
+                          </a>
+                        <?php } ?>
+                        <div class="arrow">
+                          <i class="fa fa-angle-right fa-lg"></i>
+                        </div>
+                      </div>
+                    </a>
+                  <?php 
+                      } 
+                    }
+                  ?>
+                </div>
+              </div>
 
-    </section><!-- /.Left col -->
-  </div><!-- /.row (main row) -->
+            </section>
+          </div>
+        </section>
+      </div>
 
-</section><!-- /.content -->
-</div><!-- /.content-wrapper -->
-<?php include "footer.php"; ?>
-
-      <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+      <?php include "footer.php"; ?>
       <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
+    </div>
 
-    <!-- jQuery 2.1.4 -->
+    <!-- JS -->
     <script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
     <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
     <script src="../assets/plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
     <script src="../assets/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="../assets/dist/js/demo.js"></script>
-    <script type="text/javascript"> 
-
-            $(function () {
-                $("#lookup").dataTable({"lengthMenu":[25,50,75,100],"pageLength":25});
-            });
-    </script>
-
   </body>
 </html>

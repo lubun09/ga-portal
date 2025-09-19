@@ -5,12 +5,16 @@ if (session_status() == PHP_SESSION_NONE) {
 include '../koneksi/koneksi.php';
 
 // Ambil data user kurir
-$sql = "SELECT * FROM tb_kurir WHERE id_kurir='".$_SESSION['id']."'";                        
+$sql = "SELECT * FROM tb_kurir WHERE id_kurir='" . $_SESSION['id'] . "'";                        
 $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_array($query);
 
-// Ambil notifikasi unread untuk kurir
-$notif_sql = "SELECT * FROM tb_notifikasi WHERE id_pelanggan='".$_SESSION['id']."' AND status='unread' ORDER BY tanggal DESC LIMIT 5";
+// Ambil notifikasi unread (sesuaikan kalau di tb_notifikasi sudah ada kolom id_kurir)
+$notif_sql = "SELECT * FROM tb_notifikasi 
+              WHERE id_pelanggan='" . $_SESSION['id'] . "' 
+              AND status='unread' 
+              ORDER BY tanggal DESC LIMIT 5";
+
 $notif_q = mysqli_query($db, $notif_sql);
 $jumlah_notif = mysqli_num_rows($notif_q);
 ?>
@@ -38,20 +42,26 @@ $jumlah_notif = mysqli_num_rows($notif_q);
               <span class="label label-warning"><?php echo $jumlah_notif; ?></span>
             <?php } ?>
           </a>
-          <ul class="dropdown-menu" style="border-radius:10px;">
+          <ul class="dropdown-menu" style="border-radius:10px; width:300px;">
             <li class="header">Anda punya <?php echo $jumlah_notif; ?> notifikasi</li>
             <li>
               <ul class="menu">
-                <?php while($n = mysqli_fetch_array($notif_q)){ ?>
-                  <li>
-                    <a href="update_notif.php?id=<?php echo $n['id_notif']; ?>&redirect=<?php echo basename($_SERVER['PHP_SELF']); ?>">
-                      <i class="fa fa-info-circle text-aqua"></i> <?php echo $n['pesan']; ?>
-                      <small class="pull-right"><i><?php echo date("d-m H:i", strtotime($n['tanggal'])); ?></i></small>
-                    </a>
-                  </li>
+                <?php 
+                if ($jumlah_notif > 0) {
+                  while($n = mysqli_fetch_array($notif_q)){ ?>
+                    <li>
+                      <a href="update_notif.php?id=<?php echo $n['id_notif']; ?>&redirect=<?php echo basename($_SERVER['PHP_SELF']); ?>">
+                        <i class="fa fa-info-circle text-aqua"></i> <?php echo $n['pesan']; ?>
+                        <br><small><i><?php echo date("d-m-Y H:i", strtotime($n['tanggal'])); ?></i></small>
+                      </a>
+                    </li>
+                <?php } 
+                } else { ?>
+                  <li><a href="#"><i class="fa fa-check text-green"></i> Tidak ada notifikasi baru</a></li>
                 <?php } ?>
               </ul>
             </li>
+            <li class="footer"><a href="notifikasi.php">Lihat semua</a></li>
           </ul>
         </li>
 
@@ -78,7 +88,9 @@ $jumlah_notif = mysqli_num_rows($notif_q);
             </li>
           </ul>
         </li>
-
+        <li>
+          <a href="#" data-toggle="control-sidebar"><i class="fa fa-cog fa-spin"></i></a>
+        </li>
       </ul>
     </div>
   </nav>
